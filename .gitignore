@@ -1,8 +1,9 @@
-# SPMF input and output files
+# SPMF input and output files, jar itself
 *.txt
 *.text
 *.csv
 *.pkl
+*.jar
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

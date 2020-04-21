@@ -18,10 +18,15 @@ import subprocess
 
 class Spmf:
     def __init__(self, algorithm_name, input_filename, output_filename,
-                 arguments):
-        # TODO: Un-hardcode
-        self.executable_dir_ = "/home/me/programs/spmf/"
+                 arguments, spmf_bin_location_dir="."):
+        self.executable_dir_ = spmf_bin_location_dir
         self.executable_ = "spmf.jar"
+
+        if not (os.path.isfile(os.path.join(self.executable_dir_,
+                                            self.executable_))):
+            raise FileNotFoundError(self.executable_ + " not found. Please" +
+                                    " use the spmf_bin_location_dir argument.")
+
         self.agorithm_name_ = algorithm_name
         self.input_ = input_filename
         self.output_ = output_filename
