@@ -1,6 +1,8 @@
 # SPMF input and output files
 *.txt
 *.text
+*.csv
+*.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

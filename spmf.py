@@ -27,6 +27,7 @@ class Spmf:
         self.output_ = output_filename
         self.arguments_ = [str(a) for a in arguments]
         self.patterns_ = []
+        self.df_ = None
 
     def run(self):
         subprocess_arguments = [
@@ -67,4 +68,24 @@ class Spmf:
             patterns_dict_list.append({'pattern': pattern, 'sup': sup})
 
         df = pd.DataFrame(patterns_dict_list)
+        self.df_ = df
         return df
+
+    def to_csv(self, file_name, df=None, list_as_string=True):
+        """
+        list_as_string: Fix CSV output so that '[]' is not present
+        """
+        if self.df_ is None and df is None:
+            self.df_ = self.to_pandas_dataframe()
+
+        if df is not None:
+            self.df_ = df
+
+        if not list_as_string:
+            self.df_.to_csv(file_name, sep=';', index=False)
+        else:
+            df = self.df_
+            for _, row in df.iterrows():
+                row['pattern'] = ','.join(row['pattern'])
+
+            df.to_csv(file_name, sep=';', index=False)
