@@ -11,3 +11,5 @@ In theory, all algorithms featured in SPMF are callable. Nothing is hardcoded, t
 
 ## Usage
 `TODO`
+
+It is assumed that the SPMF binary `spmf.jar` is located in the same directory as `spmf-py`. If it is not, either symlink it, or use the `spmf_bin_location_dir` parameter.
