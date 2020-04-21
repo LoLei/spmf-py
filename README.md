@@ -16,3 +16,6 @@ It is assumed that the SPMF binary `spmf.jar` is located in the same directory a
 
 ## Installation
 `TODO`
+
+## Background
+Why? If you're in a Python pipeline, like a Jupyter Notebook, it might be cumbersome to use Java as an intermediate step. Using `spmf-py` you can stay in your pipeline as though Java is never used at all.
