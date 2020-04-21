@@ -16,21 +16,26 @@ import subprocess
 
 
 class Spmf:
-    def __init__(self, algorithm, input_filename, output_filename, arguments):
+    def __init__(self, algorithm_name, input_filename, output_filename,
+                 arguments):
+        # TODO: Un-hardcode
         self.executable_dir_ = "/home/me/programs/spmf/"
         self.executable_ = "spmf.jar"
-        self.agorithm_ = algorithm
+        self.agorithm_name_ = algorithm_name
         self.input_ = input_filename
         self.output_ = output_filename
-        self.arguments_ = arguments
+        self.arguments_ = [str(a) for a in arguments]
 
     def run(self):
-        subprocess.call(["java", "-jar", os.path.join(self.executable_dir_,
-                                                      self.executable_),
-                         "run",
-                         self.agorithm_,
-                         self.input_, self.output_,
-                         str(5), str(4), str(""), str(""), str(1)])
+        subprocess_arguments = [
+            "java", "-jar",
+            os.path.join(self.executable_dir_, self.executable_),
+            "run",
+            self.agorithm_name_,
+            self.input_, self.output_]
+        subprocess_arguments.extend(self.arguments_)
+
+        subprocess.call(subprocess_arguments)
 
     def decode_output(self):
         # read
