@@ -30,6 +30,10 @@ class Spmf:
         self.df_ = None
 
     def run(self):
+        """
+        Start the SPMF process
+        Calls the Java binary with the previously specified parameters
+        """
         subprocess_arguments = [
             "java", "-jar",
             os.path.join(self.executable_dir_, self.executable_),
@@ -41,6 +45,12 @@ class Spmf:
         subprocess.call(subprocess_arguments)
 
     def decode_output(self):
+        """
+        Parse the output of SPMF
+        -1 separates itemsets
+        -2 indicates end of a sequence
+        http://data-mining.philippe-fournier-viger.com/introduction-to-sequential-rule-mining/#comment-4114
+        """
         # read
         lines = []
         with open(self.output_, "r") as f:
@@ -50,15 +60,16 @@ class Spmf:
         patterns = []
         for line in lines:
             line = line.strip()
-            # -1 separates itemsets
-            # -2 indicates end of a sequence
-            # http://data-mining.philippe-fournier-viger.com/introduction-to-sequential-rule-mining/#comment-4114
             patterns.append(line.split(" -1 "))
 
         self.patterns_ = patterns
         return patterns
 
     def to_pandas_dataframe(self, pickle=False):
+        """
+        Convert output to pandas DataFrame
+        pickle: Save as serialized pickle
+        """
         patterns_dict_list = []
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
@@ -76,6 +87,9 @@ class Spmf:
 
     def to_csv(self, file_name, df=None, list_as_string=True):
         """
+        Save output as csv
+        Either use member variable if it has already been set,
+        or re-set it using to_pandas_dataframe, or use given dataframe
         list_as_string: Fix CSV output so that '[]' is not present
         """
         if self.df_ is None and df is None:
