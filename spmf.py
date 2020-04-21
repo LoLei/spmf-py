@@ -71,7 +71,7 @@ class Spmf:
         self.df_ = df
 
         if pickle:
-            df.to_pickle(self.output_ + ".pkl")
+            df.to_pickle(self.output_.replace(".txt", ".pkl"))
         return df
 
     def to_csv(self, file_name, df=None, list_as_string=True):
