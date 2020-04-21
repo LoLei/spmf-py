@@ -1,3 +1,7 @@
+# SPMF input and output files
+*.txt
+*.text
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
