@@ -19,28 +19,21 @@ class Spmf:
     def __init__(self):
         # TODO: Un-hardcode
         self.executable_dir_ = "/home/me/programs/spmf/"
-        self._executable = "spmf.jar"
-        self._input = "input.text"
-        self._output = "output.txt"
+        self.executable_ = "spmf.jar"
+        self.input_ = "input.text"
+        self.output_ = "output.txt"
 
     def run(self):
         subprocess.call(["java", "-jar", os.path.join(self.executable_dir_,
-            self._executable), "run", "TKS", self._input, self._output,
-            str(5),
-            str(4),
-            str(""),
-            str(""),
-            str(1)
-            ])
+                        self.executable_), "run", "TKS",
+                        self.input_, self.output_,
+                        str(5), str(4), str(""), str(""), str(1)])
 
     def decode_output(self):
         # read
         lines = []
-        try:
-            with open(self._output, "r") as f:
-                lines = f.readlines()
-        except:
-            print("read output error")
+        with open(self.output_, "r") as f:
+            lines = f.readlines()
 
         # decode
         patterns = []
