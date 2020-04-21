@@ -58,7 +58,7 @@ class Spmf:
         self.patterns_ = patterns
         return patterns
 
-    def to_pandas_dataframe(self):
+    def to_pandas_dataframe(self, pickle=False):
         patterns_dict_list = []
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
@@ -69,6 +69,9 @@ class Spmf:
 
         df = pd.DataFrame(patterns_dict_list)
         self.df_ = df
+
+        if pickle:
+            df.to_pickle(self.output_ + ".pkl")
         return df
 
     def to_csv(self, file_name, df=None, list_as_string=True):
