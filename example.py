@@ -48,6 +48,6 @@ spmf = Spmf("PrefixSpan", input_direct=input_example_list_text,
             arguments=[1, "", True])
 
 spmf.run()
-print(spmf.decode_output())
+print(spmf.parse_output())
 print(spmf.to_pandas_dataframe(pickle=True))
 spmf.to_csv("output.csv")

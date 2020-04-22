@@ -93,19 +93,17 @@ class Spmf:
 
         subprocess.call(subprocess_arguments)
 
-    def decode_output(self):
+    def parse_output(self):
         """
         Parse the output of SPMF
         -1 separates itemsets
         -2 indicates end of a sequence
         http://data-mining.philippe-fournier-viger.com/introduction-to-sequential-rule-mining/#comment-4114
         """
-        # read
         lines = []
         with open(self.output_, "r") as f:
             lines = f.readlines()
 
-        # decode
         patterns = []
         for line in lines:
             line = line.strip()
