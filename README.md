@@ -9,6 +9,9 @@ In addition, transformation of the data to Pandas DataFrame and CSV is possible.
 
 In theory, all algorithms featured in SPMF are callable. Nothing is hardcoded, the desired algorithm and its parameters need to be perused in the [SPMF documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).
 
+## Installation
+[`pip install spmf`](https://pypi.org/project/spmf/)
+
 ## Usage
 Example:  
 ```python
@@ -34,10 +37,7 @@ Download it from the [SPMF Website](http://www.philippe-fournier-viger.com/spmf/
 It is assumed that the SPMF binary `spmf.jar` is located in the same directory as `spmf-py`. If it is not, either symlink it, or use the `spmf_bin_location_dir` parameter.
 
 ### Input Formats
-TODO: Text vs normal, file vs direct.
-
-## Installation
-`TODO`
+Either use an input file as specified by SPMF, or use one of the in-line formats as seen in [`example.py`](https://github.com/LoLei/spmf-py/blob/master/example.py).
 
 ## Background
 Why? If you're in a Python pipeline, like a Jupyter Notebook, it might be cumbersome to use Java as an intermediate step. Using `spmf-py` you can stay in your pipeline as though Java is never used at all.
