@@ -79,7 +79,10 @@ class Spmf:
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
             sup = pattern_sup[-1:][0]
-            sup = sup[len(sup) - 1]
+            if not sup.startswith("#SUP"):
+                print("support extraction failed")
+            sup = sup.split()
+            sup = sup[1]
 
             patterns_dict_list.append({'pattern': pattern, 'sup': sup})
 
