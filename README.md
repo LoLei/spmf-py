@@ -2,7 +2,7 @@
 Python SPMF Wrapper 🐍 🎁
 
 ## Information
-The [SPMF](http://www.philippe-fournier-viger.com/spmf) data mining Java library usable in Python.  
+The [SPMF](http://www.philippe-fournier-viger.com/spmf) [[1](https://github.com/LoLei/spmf-py#bibliography)] data mining Java library usable in Python.  
 
 Essentially, this module calls the Java command line tool of SPMF, passes the user arguments to it, and parses the output.  
 In addition, transformation of the data to Pandas DataFrame and CSV is possible.
@@ -41,3 +41,10 @@ Either use an input file as specified by SPMF, or use one of the in-line formats
 
 ## Background
 Why? If you're in a Python pipeline, like a Jupyter Notebook, it might be cumbersome to use Java as an intermediate step. Using `spmf-py` you can stay in your pipeline as though Java is never used at all.
+
+## Bibliography
+```
+Fournier-Viger, P., Lin, C.W., Gomariz, A., Gueniche, T., Soltani, A., Deng, Z., Lam, H. T. (2016).  
+The SPMF Open-Source Data Mining Library Version 2.  
+Proc. 19th European Conference on Principles of Data Mining and Knowledge Discovery (PKDD 2016) Part III, Springer LNCS 9853,  pp. 36-40.
+```
