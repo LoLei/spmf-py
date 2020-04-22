@@ -41,7 +41,7 @@ class Spmf:
     def handle_input(self, input_direct, input_filename, input_type):
         if input_filename:
             return input_filename
-        elif input_direct is not None:
+        if input_direct is not None:
             if type(input_direct) == str:
                 if input_type == "normal":
                     file_ending = ".txt"
@@ -50,7 +50,13 @@ class Spmf:
                 return self.write_temp_input_file(input_direct,
                                                   file_ending)
             elif type(input_direct) == list:
-                pass
+                if input_type == "normal":
+                    pass
+                elif input_type == "text":
+                    seq_str = ""
+                    for seq in input_direct:
+                        seq_str += seq + ". "
+                    return self.write_temp_input_file(seq_str, ".text")
             else:
                 raise TypeError("no correct input format found (required: " +
                                 "list or str, or input file via" +
