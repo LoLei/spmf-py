@@ -118,6 +118,10 @@ class Spmf:
         pickle: Save as serialized pickle
         """
         # TODO: Optional parameter for pickle file name
+
+        if not self.patterns_:
+            self.parse_output()
+
         patterns_dict_list = []
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
