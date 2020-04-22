@@ -76,4 +76,4 @@ Proc. 19th European Conference on Principles of Data Mining and Knowledge Discov
 ```
 
 ## Disclaimer
-This module has not been tested for all 184 algorithms offered in SPMF. It should work for those that have outputs like the sequential pattern mining algorithms. It was not tested it with other types, some adaption of the output parsing might be necessary. If something is not working, submit an issue or create a PR yourself!
+This module has not been tested for all 184 algorithms offered in SPMF. Calling them and writing to the output file should be possible for all. Output parsing however should work for those that have outputs like the sequential pattern mining algorithms. It was not tested it with other types, some adaption of the output parsing might be necessary. If something is not working, submit an issue or create a PR yourself!
