@@ -4,6 +4,7 @@
 *.csv
 *.pkl
 *.jar
+!examples/contextPrefixSpan.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
