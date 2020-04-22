@@ -1,7 +1,5 @@
 from spmf import Spmf
 
-# spmf = Spmf("TKS", "min.text", "output.txt", [5, 2, 5, "", 1])
-# spmf = Spmf("TKS", "contextPrefixSpan.txt", "output.txt", [5, "", "", "", ""])
 spmf = Spmf("PrefixSpan", "contextPrefixSpan.txt", "output.txt", [1, "", True])
 spmf.run()
 print(spmf.decode_output())
