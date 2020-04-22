@@ -18,11 +18,37 @@ Example:
 from spmf import Spmf
 
 spmf = Spmf("PrefixSpan", input_filename="contextPrefixSpan.txt",
-            output_filename="output.txt", arguments=[1, 5])
+            output_filename="output.txt", arguments=[0.7, 5])
 spmf.run()
-print(spmf.parse_output())
 print(spmf.to_pandas_dataframe(pickle=True))
 spmf.to_csv("output.csv")
+```
+
+Output:
+```
+=============  PREFIXSPAN 0.99-2016 - STATISTICS =============
+ Total time ~ 2 ms
+ Frequent sequences count : 14
+ Max memory (mb) : 6.487663269042969
+ minsup = 3 sequences.
+ Pattern count : 14
+===================================================
+
+      pattern sup
+0         [1]   4
+1      [1, 2]   4
+2      [1, 3]   4
+3   [1, 3, 2]   3
+4   [1, 3, 3]   3
+5         [2]   4
+6      [2, 3]   3
+7         [3]   4
+8      [3, 2]   3
+9      [3, 3]   3
+10        [4]   3
+11     [4, 3]   3
+12        [5]   3
+13        [6]   3
 ```
 
 The usage is similar to the one described in the SPMF [documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).  
@@ -48,3 +74,6 @@ Fournier-Viger, P., Lin, C.W., Gomariz, A., Gueniche, T., Soltani, A., Deng, Z.,
 The SPMF Open-Source Data Mining Library Version 2.  
 Proc. 19th European Conference on Principles of Data Mining and Knowledge Discovery (PKDD 2016) Part III, Springer LNCS 9853,  pp. 36-40.
 ```
+
+## Disclaimer
+This module has not been tested for all 184 algorithms offered in SPMF. If one is not working, submit an issue or create a PR yourself! 
