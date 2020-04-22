@@ -18,10 +18,14 @@ import tempfile
 
 
 class Spmf:
-    def __init__(self, algorithm_name, input_direct=None, input_type="normal",
+    def __init__(self,
+                 algorithm_name,
+                 input_direct=None,
+                 input_type="normal",
                  input_filename="",
                  output_filename="spmf-output.txt",
-                 arguments=[], spmf_bin_location_dir="."):
+                 arguments=[],
+                 spmf_bin_location_dir="."):
         self.executable_dir_ = spmf_bin_location_dir
         self.executable_ = "spmf.jar"
 
@@ -41,37 +45,31 @@ class Spmf:
     def handle_input(self, input_direct, input_filename, input_type):
         if input_filename:
             return input_filename
-        if input_direct is not None:
-            if type(input_direct) == str:
-                if input_type == "normal":
-                    file_ending = ".txt"
-                elif input_type == "text":
-                    file_ending = ".text"
-                return self.write_temp_input_file(input_direct,
-                                                  file_ending)
-            elif type(input_direct) == list:
-                if input_type == "normal":
-                    seq_spmf = ""
-                    for seq in input_direct:
-                        for item_set in seq:
-                            for item in item_set:
-                                seq_spmf += str(item) + ' '
-                            seq_spmf += str(-1) + ' '
-                        seq_spmf += str(-2) + '\n'
-                    return self.write_temp_input_file(seq_spmf, ".txt")
-                elif input_type == "text":
-                    seq_str = ""
-                    for seq in input_direct:
-                        seq_str += seq + ". "
-                    return self.write_temp_input_file(seq_str, ".text")
-            else:
-                raise TypeError("no correct input format found (required: " +
-                                "list or str, or input file via" +
-                                " input_filename parameter)")
-        else:
-            raise TypeError("no correct input format found (required: " +
-                            "list or str, or input file via" +
-                            " input_filename parameter)")
+        if type(input_direct) == str:
+            if input_type == "normal":
+                file_ending = ".txt"
+            elif input_type == "text":
+                file_ending = ".text"
+            return self.write_temp_input_file(input_direct,
+                                              file_ending)
+        if type(input_direct) == list:
+            if input_type == "normal":
+                seq_spmf = ""
+                for seq in input_direct:
+                    for item_set in seq:
+                        for item in item_set:
+                            seq_spmf += str(item) + ' '
+                        seq_spmf += str(-1) + ' '
+                    seq_spmf += str(-2) + '\n'
+                return self.write_temp_input_file(seq_spmf, ".txt")
+            if input_type == "text":
+                seq_str = ""
+                for seq in input_direct:
+                    seq_str += seq + ". "
+                return self.write_temp_input_file(seq_str, ".text")
+        raise TypeError("no correct input format found (required: " +
+                        "list or str, or input file via" +
+                        " input_filename parameter)")
 
     def write_temp_input_file(self, input_text, file_ending):
         tf = tempfile.NamedTemporaryFile(delete=False)
