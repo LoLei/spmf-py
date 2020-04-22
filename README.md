@@ -14,17 +14,27 @@ Example:
 ```python
 from spmf import Spmf
 
-spmf = Spmf("PrefixSpan", "contextPrefixSpan.txt", "output.txt", [1, "", True])
+spmf = Spmf("PrefixSpan", input_filename="contextPrefixSpan.txt",
+            output_filename="output.txt", arguments=[1, 5])
 spmf.run()
-print(spmf.decode_output())
+print(spmf.parse_output())
 print(spmf.to_pandas_dataframe(pickle=True))
 spmf.to_csv("output.csv")
-
 ```
 
-`TODO:` Description of parameters etc.
+The usage is similar to the one described in the SPMF [documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).  
+For all Python parameters, see the [Spmf class](https://github.com/LoLei/spmf-py/blob/master/spmf.py#L20).  
 
+### SPMF Arguments
+The `arguments` parameter are the arguments that are passed to SPMF and depend on the chosen algorithm. SPMF handles optional parameters as an ordered list. As there are no named parameters for the algorithms, if e.g. only the first and the last parameter of an algorithm are to be used, the ones in between must be filled with `""` blank strings.  
+For advanced usage examples, see [`example.py`](https://github.com/LoLei/spmf-py/blob/master/example.py).
+
+### SPMF Executable
+Download it from the [SPMF Website](http://www.philippe-fournier-viger.com/spmf/index.php?link=download.php).  
 It is assumed that the SPMF binary `spmf.jar` is located in the same directory as `spmf-py`. If it is not, either symlink it, or use the `spmf_bin_location_dir` parameter.
+
+### Input Formats
+TODO: Text vs normal, file vs direct.
 
 ## Installation
 `TODO`
