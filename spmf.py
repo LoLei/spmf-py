@@ -14,11 +14,14 @@ __license__ = "GNU GPL v3.0"
 import pandas as pd
 import os
 import subprocess
+import tempfile
 
 
 class Spmf:
-    def __init__(self, algorithm_name, input_filename, output_filename,
-                 arguments, spmf_bin_location_dir="."):
+    def __init__(self, algorithm_name, input_direct=None, input_type="normal",
+                 input_filename="",
+                 output_filename="spmf-output.txt",
+                 arguments=[], spmf_bin_location_dir="."):
         self.executable_dir_ = spmf_bin_location_dir
         self.executable_ = "spmf.jar"
 
@@ -28,11 +31,41 @@ class Spmf:
                                     " use the spmf_bin_location_dir argument.")
 
         self.agorithm_name_ = algorithm_name
-        self.input_ = input_filename
+        self.input_ = self.handle_input(
+            input_direct, input_filename, input_type)
         self.output_ = output_filename
         self.arguments_ = [str(a) for a in arguments]
         self.patterns_ = []
         self.df_ = None
+
+    def handle_input(self, input_direct, input_filename, input_type):
+        if input_filename:
+            return input_filename
+        elif input_direct is not None:
+            if type(input_direct) == str:
+                if input_type == "normal":
+                    file_ending = ".txt"
+                elif input_type == "text":
+                    file_ending = ".text"
+                return self.write_temp_input_file(input_direct,
+                                                  file_ending)
+            elif type(input_direct) == list:
+                pass
+            else:
+                raise TypeError("no correct input format found (required: " +
+                                "list or str, or input file via" +
+                                " input_filename parameter)")
+        else:
+            raise TypeError("no correct input format found (required: " +
+                            "list or str, or input file via" +
+                            " input_filename parameter)")
+
+    def write_temp_input_file(self, input_text, file_ending):
+        tf = tempfile.NamedTemporaryFile(delete=False)
+        tf.write(bytes(input_text, 'UTF-8'))
+        name = tf.name
+        os.rename(name, name + file_ending)
+        return name + file_ending
 
     def run(self):
         """
@@ -79,6 +112,7 @@ class Spmf:
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
             sup = pattern_sup[-1:][0]
+            sup = sup.strip()
             if not sup.startswith("#SUP"):
                 print("support extraction failed")
             sup = sup.split()
