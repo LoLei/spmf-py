@@ -26,8 +26,8 @@ w5 w6 w1 w2 w4 w6 w3 w2.
 w5 w7 w1 w6 w3 w2 w3.
 """
 
-# spmf = Spmf("PrefixSpan", input_filename="contextPrefixSpan.txt",
-# output_filename="output.txt", arguments=[1, "", True])
+spmf = Spmf("PrefixSpan", input_filename="contextPrefixSpan.txt",
+            output_filename="output.txt", arguments=[1, "", True])
 
 # spmf = Spmf("PrefixSpan", input_direct=input_example_raw,
             # output_filename="output.txt",

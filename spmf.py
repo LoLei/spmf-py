@@ -51,7 +51,14 @@ class Spmf:
                                                   file_ending)
             elif type(input_direct) == list:
                 if input_type == "normal":
-                    pass
+                    seq_spmf = ""
+                    for seq in input_direct:
+                        for item_set in seq:
+                            for item in item_set:
+                                seq_spmf += str(item) + ' '
+                            seq_spmf += str(-1) + ' '
+                        seq_spmf += str(-2) + '\n'
+                    return self.write_temp_input_file(seq_spmf, ".txt")
                 elif input_type == "text":
                     seq_str = ""
                     for seq in input_direct:
