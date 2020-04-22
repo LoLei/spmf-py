@@ -117,6 +117,7 @@ class Spmf:
         Convert output to pandas DataFrame
         pickle: Save as serialized pickle
         """
+        # TODO: Optional parameter for pickle file name
         patterns_dict_list = []
         for pattern_sup in self.patterns_:
             pattern = pattern_sup[:-1]
