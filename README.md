@@ -10,7 +10,19 @@ In addition, transformation of the data to Pandas DataFrame and CSV is possible.
 In theory, all algorithms featured in SPMF are callable. Nothing is hardcoded, the desired algorithm and its parameters need to be perused in the [SPMF documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).
 
 ## Usage
-`TODO`
+Example:  
+```python
+from spmf import Spmf
+
+spmf = Spmf("PrefixSpan", "contextPrefixSpan.txt", "output.txt", [1, "", True])
+spmf.run()
+print(spmf.decode_output())
+print(spmf.to_pandas_dataframe(pickle=True))
+spmf.to_csv("output.csv")
+
+```
+
+`TODO:` Description of parameters etc.
 
 It is assumed that the SPMF binary `spmf.jar` is located in the same directory as `spmf-py`. If it is not, either symlink it, or use the `spmf_bin_location_dir` parameter.
 
