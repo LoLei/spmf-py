@@ -95,7 +95,7 @@ class Spmf:
 
     def parse_output(self):
         """
-        Parse the output of SPMF
+        Parse the output of SPMF and saves in in member variable patterns_
         -1 separates itemsets
         -2 indicates end of a sequence
         http://data-mining.philippe-fournier-viger.com/introduction-to-sequential-rule-mining/#comment-4114
