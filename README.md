@@ -52,7 +52,7 @@ Output:
 ```
 
 The usage is similar to the one described in the SPMF [documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).  
-For all Python parameters, see the [Spmf class](https://github.com/LoLei/spmf-py/blob/master/spmf.py#L20).  
+For all Python parameters, see the [Spmf class](https://github.com/LoLei/spmf-py/blob/master/spmf/__init__.py).  
 
 ### SPMF Arguments
 The `arguments` parameter are the arguments that are passed to SPMF and depend on the chosen algorithm. SPMF handles optional parameters as an ordered list. As there are no named parameters for the algorithms, if e.g. only the first and the last parameter of an algorithm are to be used, the ones in between must be filled with `""` blank strings.  
