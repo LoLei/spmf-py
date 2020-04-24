@@ -8,7 +8,7 @@ http://forum.ai-directory.com/read.php?5,5510
 """
 
 __author__ = "Lorenz Leitner"
-__version__ = "1.0"
+__version__ = "1.1"
 __license__ = "GNU GPL v3.0"
 
 import pandas as pd
@@ -91,7 +91,11 @@ class Spmf:
             self.input_, self.output_]
         subprocess_arguments.extend(self.arguments_)
 
-        subprocess.call(subprocess_arguments)
+        proc = subprocess.check_output(subprocess_arguments)
+        proc_output = proc.decode()
+        print(proc_output)
+        if "java.lang.IllegalArgumentException" in proc_output:
+            raise TypeError("java.lang.IllegalArgumentException")
 
     def parse_output(self):
         """
