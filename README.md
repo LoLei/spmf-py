@@ -1,5 +1,5 @@
 # spmf-py
-Python SPMF Wrapper 🐍 🎁
+Python Wrapper for SPMF 🐍 🎁
 
 ## Information
 The [SPMF](http://www.philippe-fournier-viger.com/spmf) [[1](https://github.com/LoLei/spmf-py#bibliography)] data mining Java library usable in Python.  
@@ -52,18 +52,18 @@ Output:
 ```
 
 The usage is similar to the one described in the SPMF [documentation](http://www.philippe-fournier-viger.com/spmf/index.php?link=documentation.php).  
-For all Python parameters, see the [Spmf class](https://github.com/LoLei/spmf-py/blob/master/spmf.py#L20).  
+For all Python parameters, see the [Spmf class](https://github.com/LoLei/spmf-py/blob/master/spmf/__init__.py).  
 
 ### SPMF Arguments
 The `arguments` parameter are the arguments that are passed to SPMF and depend on the chosen algorithm. SPMF handles optional parameters as an ordered list. As there are no named parameters for the algorithms, if e.g. only the first and the last parameter of an algorithm are to be used, the ones in between must be filled with `""` blank strings.  
-For advanced usage examples, see [`example.py`](https://github.com/LoLei/spmf-py/blob/master/example.py).
+For advanced usage examples, see [`examples`](https://github.com/LoLei/spmf-py/tree/master/examples).
 
 ### SPMF Executable
 Download it from the [SPMF Website](http://www.philippe-fournier-viger.com/spmf/index.php?link=download.php).  
 It is assumed that the SPMF binary `spmf.jar` is located in the same directory as `spmf-py`. If it is not, either symlink it, or use the `spmf_bin_location_dir` parameter.
 
 ### Input Formats
-Either use an input file as specified by SPMF, or use one of the in-line formats as seen in [`example.py`](https://github.com/LoLei/spmf-py/blob/master/example.py).
+Either use an input file as specified by SPMF, or use one of the in-line formats as seen in [`examples`](https://github.com/LoLei/spmf-py/tree/master/examples).
 
 ## Background
 Why? If you're in a Python pipeline, like a Jupyter Notebook, it might be cumbersome to use Java as an intermediate step. Using `spmf-py` you can stay in your pipeline as though Java is never used at all.
@@ -76,4 +76,4 @@ Proc. 19th European Conference on Principles of Data Mining and Knowledge Discov
 ```
 
 ## Disclaimer
-This module has not been tested for all 184 algorithms offered in SPMF. If one is not working, submit an issue or create a PR yourself! 
+This module has not been tested for all 184 algorithms offered in SPMF. Calling them and writing to the output file should be possible for all. Output parsing however should work for those that have outputs like the sequential pattern mining algorithms. It was not tested it with other types, some adaption of the output parsing might be necessary. If something is not working, submit an issue or create a PR yourself!
