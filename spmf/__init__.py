@@ -8,7 +8,7 @@ http://forum.ai-directory.com/read.php?5,5510
 """
 
 __author__ = "Lorenz Leitner"
-__version__ = "1.1"
+__version__ = "1.2"
 __license__ = "GNU GPL v3.0"
 
 import pandas as pd
@@ -136,7 +136,7 @@ class Spmf:
             sup = sup.split()
             sup = sup[1]
 
-            patterns_dict_list.append({'pattern': pattern, 'sup': sup})
+            patterns_dict_list.append({'pattern': pattern, 'sup': int(sup)})
 
         df = pd.DataFrame(patterns_dict_list)
         self.df_ = df
