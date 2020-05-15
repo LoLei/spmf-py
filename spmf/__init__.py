@@ -8,7 +8,7 @@ http://forum.ai-directory.com/read.php?5,5510
 """
 
 __author__ = "Lorenz Leitner"
-__version__ = "1.2"
+__version__ = "1.3"
 __license__ = "GNU GPL v3.0"
 
 import pandas as pd
@@ -25,7 +25,8 @@ class Spmf:
                  input_filename="",
                  output_filename="spmf-output.txt",
                  arguments=[],
-                 spmf_bin_location_dir="."):
+                 spmf_bin_location_dir=".",
+                 memory=0):
         self.executable_dir_ = spmf_bin_location_dir
         self.executable_ = "spmf.jar"
 
@@ -41,6 +42,7 @@ class Spmf:
         self.arguments_ = [str(a) for a in arguments]
         self.patterns_ = []
         self.df_ = None
+        self.memory_ = memory
 
     def handle_input(self, input_direct, input_filename, input_type):
         if input_filename:
@@ -83,12 +85,18 @@ class Spmf:
         Start the SPMF process
         Calls the Java binary with the previously specified parameters
         """
-        subprocess_arguments = [
-            "java", "-jar",
-            os.path.join(self.executable_dir_, self.executable_),
-            "run",
-            self.agorithm_name_,
-            self.input_, self.output_]
+        subprocess_arguments = ["java"]
+
+        # http://www.philippe-fournier-viger.com/spmf/index.php?link=FAQ.php#memory
+        if self.memory_:
+            subprocess_arguments.append(f'-Xmx{self.memory_}m')
+
+        subprocess_arguments.extend(
+            ["-jar",
+             os.path.join(self.executable_dir_, self.executable_),
+             "run",
+             self.agorithm_name_,
+             self.input_, self.output_])
         subprocess_arguments.extend(self.arguments_)
 
         proc = subprocess.check_output(subprocess_arguments)

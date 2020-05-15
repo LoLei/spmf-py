@@ -65,6 +65,11 @@ It is assumed that the SPMF binary `spmf.jar` is located in the same directory a
 ### Input Formats
 Either use an input file as specified by SPMF, or use one of the in-line formats as seen in [`examples`](https://github.com/LoLei/spmf-py/tree/master/examples).
 
+### Memory
+The maxmimum memory can be increased in the constructor via `Spmf(memory=n)`,
+where `n` is megabyte, see SPMF's
+[FAQ](http://www.philippe-fournier-viger.com/spmf/index.php?link=FAQ.php#memory).
+
 ## Background
 Why? If you're in a Python pipeline, like a Jupyter Notebook, it might be cumbersome to use Java as an intermediate step. Using `spmf-py` you can stay in your pipeline as though Java is never used at all.
 

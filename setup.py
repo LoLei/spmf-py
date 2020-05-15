@@ -5,7 +5,7 @@ LONG_DESC = open('README.md').read()
 
 setuptools.setup(
     name="spmf",
-    version="1.2",
+    version="1.3",
     author="Lorenz Leitner",
     author_email="lrnz.ltnr@gmail.com",
     description="Python Wrapper for SPMF",
