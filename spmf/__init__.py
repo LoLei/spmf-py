@@ -8,7 +8,7 @@ http://forum.ai-directory.com/read.php?5,5510
 """
 
 __author__ = "Lorenz Leitner"
-__version__ = "1.3"
+__version__ = "1.4"
 __license__ = "GNU GPL v3.0"
 
 import pandas as pd
