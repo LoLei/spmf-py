@@ -29,9 +29,16 @@ class Spmf:
                  memory=0):
         self.executable_dir_ = spmf_bin_location_dir
         self.executable_ = "spmf.jar"
+        
+        self.is_exist_executable_ = os.path.isfile(
+            os.path.join(self.executable_dir_, self.executable_))
 
-        if not (os.path.isfile(os.path.join(self.executable_dir_,
-                                            self.executable_))):
+        if not self.is_exist_executable_:
+            self.executable_dir_ = os.path.dirname(os.path.realpath(__file__))
+            self.is_exist_executable_ = os.path.isfile(
+                os.path.join(self.executable_dir_, self.executable_))
+
+        if not self.is_exist_executable_:
             raise FileNotFoundError(self.executable_ + " not found. Please" +
                                     " use the spmf_bin_location_dir argument.")
 
